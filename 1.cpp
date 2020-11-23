@@ -4,43 +4,28 @@
 using namespace std;
 
 
-int main()
+void hanoi(int, int, int, int);
+
+int main(void)
 {
-	int i,j,tmp;
-	int data[8]={26,35,49,37,12,8,45,63};
+	int j;
 	
-	cout<<"æ°£æ³¡æ’åºæ³• : "<<endl<<"åŸå§‹è³‡æ–™ç‚º:";
+	cout<<"½Ğ¿é¤J½L¤l¼Æ¶q:";
+	cin>>j;
 	
-	for (i=0;i<8;i++)
-		cout<<data[i]<<"\t";
-	cout<<endl;
-		
-    for (i=7;i>0;i--)
-    {
-    	
-    	for (j=0;j<i;j++)
-    	{
-    		if (data[j]>data[j+1])
-    		
-		   {
-			      tmp=data[j];
-			      data[j]=data[j+1];
-			      data[j+1]=tmp;
-			
-			
-		   }
-	   }
-	}
-	cout<<"æ’åºå¾Œçµæœç‚º:  ";
+	hanoi(j,1, 2, 3);
 	
-	for (i=0;i<8;i++)
-	    cout<<data[i]<<"\t";
-    cout<<endl;
-	
-	return 0;	   	 	 
+	return 0;
 }
 
-æ°£æ³¡æ’åºæ³• :
-åŸå§‹è³‡æ–™ç‚º:26   35      49      37      12      8       45      63
-æ’åºå¾Œçµæœç‚º:  8        12      26      35      37      45      49      63
-
+void hanoi(int n, int p1, int p2, int p3)
+{
+	if (n==1)
+	   cout<<"½L¤l±q "<<p1<<" ²¾¨ì"<<p3<<endl;
+	else
+	{
+		hanoi(n-1, p1, p3, p2);
+		cout<<"±q½L¤l "<<p1<<" ²¾¨ì"<<p3<<endl;
+		hanoi(n-1, p2, p1, p3); 
+		}    
+}
